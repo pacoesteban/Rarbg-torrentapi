@@ -1,5 +1,5 @@
 {
-   "abstract" : "Blah blah blah",
+   "abstract" : "Wrapper around Rarbg torrentapi (https://torrentapi.org/apidocs_v2.txt)",
    "author" : [
       "Paco Esteban <paco@onna.be>"
    ],
@@ -37,16 +37,31 @@
       },
       "runtime" : {
          "requires" : {
+            "JSON" : "0",
+            "LWP::UserAgent" : "0",
+            "Moose" : "0",
             "perl" : "5.008005"
          }
       },
       "test" : {
          "requires" : {
+            "JSON" : "0",
             "Test::More" : "0.96"
          }
       }
    },
    "release_status" : "stable",
+   "resources" : {
+      "bugtracker" : {
+         "web" : "https://github.com/pacoesteban/Rarbg-torrentapi/issues"
+      },
+      "homepage" : "https://github.com/pacoesteban/Rarbg-torrentapi",
+      "repository" : {
+         "type" : "git",
+         "url" : "https://github.com/pacoesteban/Rarbg-torrentapi.git",
+         "web" : "https://github.com/pacoesteban/Rarbg-torrentapi"
+      }
+   },
    "version" : "0.01"
 }
 
