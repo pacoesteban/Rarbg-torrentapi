@@ -46,7 +46,8 @@
       "test" : {
          "requires" : {
             "JSON" : "0",
-            "Test::More" : "0.96"
+            "Test::More" : "0.96",
+            "Test::Pod" : "0"
          }
       }
    },
