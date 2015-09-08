@@ -250,7 +250,7 @@ Makes a call to the API in 'search' mode. It returns either a Rarbg::torrentapi:
 
 =head2 list
 
-Makes a call to the API in 'list' mode. It returns either a Rarbg::torrentapi::Error or an array of L<lt>Rarbg::torrentapi::ResL<gt>.
+Makes a call to the API in 'list' mode. It returns either a Rarbg::torrentapi::Error or an array of L<Rarbg::torrentapi::Res>.
 
 =head1 AUTHOR
 

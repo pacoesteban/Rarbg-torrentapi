@@ -97,7 +97,7 @@ Makes a call to the API in 'search' mode. It returns either a Rarbg::torrentapi:
 
 ## list
 
-Makes a call to the API in 'list' mode. It returns either a Rarbg::torrentapi::Error or an array of [lt](https://metacpan.org/pod/lt)Rarbg::torrentapi::Res[gt](https://metacpan.org/pod/gt).
+Makes a call to the API in 'list' mode. It returns either a Rarbg::torrentapi::Error or an array of [Rarbg::torrentapi::Res](https://metacpan.org/pod/Rarbg::torrentapi::Res).
 
 # AUTHOR
 
