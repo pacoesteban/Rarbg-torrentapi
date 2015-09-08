@@ -1,6 +1,6 @@
 Revision history for Rarbg-torrentapi
 
 {{$NEXT}}
-
+        - Fixes in docs and prepare for CPAN release
 0.01  2015-09-08 14:50:02 CEST
         - Initial release
