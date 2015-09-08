@@ -1,5 +1,5 @@
 {
-   "abstract" : "Wrapper around Rarbg torrentapi (https://torrentapi.org/apidocs_v2.txt)",
+   "abstract" : "Wrapper around Rarbg torrentapi (L<https://torrentapi.org/apidocs_v2.txt>)",
    "author" : [
       "Paco Esteban <paco@onna.be>"
    ],

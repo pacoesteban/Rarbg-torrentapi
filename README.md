@@ -1,6 +1,6 @@
 # NAME
 
-Rarbg::torrentapi - Wrapper around Rarbg torrentapi (https://torrentapi.org/apidocs\_v2.txt)
+Rarbg::torrentapi - Wrapper around Rarbg torrentapi ([https://torrentapi.org/apidocs\_v2.txt](https://torrentapi.org/apidocs_v2.txt))
 
 # SYNOPSIS
 
@@ -18,7 +18,7 @@ Rarbg::torrentapi - Wrapper around Rarbg torrentapi (https://torrentapi.org/apid
     });
 
     # search by string
-    # You can use all the attributes of list also
+    # You can use all attributes also
     my $search = $tapi->search({
         search_string => 'the beatles',
         category => '23;24;25;26',
@@ -50,7 +50,7 @@ Those attributes can be used on all public methods. In fact you can use them als
 
 The only difference is that you should pass them as an anonymous hash if you pass them to a method.
 
-You can find more info about their values at https://torrentapi.org/apidocs\_v2.txt
+You can find more info about their values at [https://torrentapi.org/apidocs\_v2.txt](https://torrentapi.org/apidocs_v2.txt)
 
 ## search\_string
 
@@ -93,11 +93,11 @@ Just a simple constructor.
 
 ## search
 
-Makes a call to the API in 'search' mode. It returns either a Rarbg::torrentapi::Error or an array of  Rarbg::torrentapi::Res.
+Makes a call to the API in 'search' mode. It returns either a Rarbg::torrentapi::Error or an array of [Rarbg::torrentapi::Res](https://metacpan.org/pod/Rarbg::torrentapi::Res).
 
 ## list
 
-Makes a call to the API in 'list' mode. It returns either a Rarbg::torrentapi::Error or an array of  Rarbg::torrentapi::Res.
+Makes a call to the API in 'list' mode. It returns either a Rarbg::torrentapi::Error or an array of [lt](https://metacpan.org/pod/lt)Rarbg::torrentapi::Res[gt](https://metacpan.org/pod/gt).
 
 # AUTHOR
 
@@ -111,5 +111,3 @@ Copyright 2015- Paco Esteban
 
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself.
-
-# SEE ALSO
