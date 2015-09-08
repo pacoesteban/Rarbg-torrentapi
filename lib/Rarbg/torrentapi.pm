@@ -152,7 +152,7 @@ __END__
 
 =head1 NAME
 
-Rarbg::torrentapi - Wrapper around Rarbg torrentapi (https://torrentapi.org/apidocs_v2.txt)
+Rarbg::torrentapi - Wrapper around Rarbg torrentapi (L<https://torrentapi.org/apidocs_v2.txt>)
 
 =head1 SYNOPSIS
 
@@ -170,7 +170,7 @@ Rarbg::torrentapi - Wrapper around Rarbg torrentapi (https://torrentapi.org/apid
   });
 
   # search by string
-  # You can use all the attributes of list also
+  # You can use all attributes also
   my $search = $tapi->search({
       search_string => 'the beatles',
       category => '23;24;25;26',
@@ -203,7 +203,7 @@ Those attributes can be used on all public methods. In fact you can use them als
 
 The only difference is that you should pass them as an anonymous hash if you pass them to a method.
 
-You can find more info about their values at https://torrentapi.org/apidocs_v2.txt
+You can find more info about their values at L<https://torrentapi.org/apidocs_v2.txt>
 
 =head2 search_string
 
@@ -246,11 +246,11 @@ Just a simple constructor.
 
 =head2 search
 
-Makes a call to the API in 'search' mode. It returns either a Rarbg::torrentapi::Error or an array of  Rarbg::torrentapi::Res.
+Makes a call to the API in 'search' mode. It returns either a Rarbg::torrentapi::Error or an array of L<Rarbg::torrentapi::Res>.
 
 =head2 list
 
-Makes a call to the API in 'list' mode. It returns either a Rarbg::torrentapi::Error or an array of  Rarbg::torrentapi::Res.
+Makes a call to the API in 'list' mode. It returns either a Rarbg::torrentapi::Error or an array of L<lt>Rarbg::torrentapi::ResL<gt>.
 
 =head1 AUTHOR
 
@@ -264,7 +264,5 @@ Copyright 2015- Paco Esteban
 
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself.
-
-=head1 SEE ALSO
 
 =cut
