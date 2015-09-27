@@ -1,5 +1,6 @@
 use strict;
 use Test::More;
+use Test::RequiresInternet ( 'torrentapi.org', => 443 );
 
 BEGIN {
     use_ok('Rarbg::torrentapi');
