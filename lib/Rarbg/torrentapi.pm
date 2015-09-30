@@ -40,7 +40,7 @@ has ranked => (
     default => 0
 );
 
-has _mode => (
+has mode => (
     is      => 'rw',
     isa     => 'Str',
     default => 'list'
@@ -137,7 +137,7 @@ foreach my $method (qw/list search/) {
             foreach my $key ( keys %{$args} ) {
                 $self->$key( $args->{$key} );
             }
-            $self->_mode("$method");
+            $self->mode("$method");
             return $self->_make_request;
         }
     );
