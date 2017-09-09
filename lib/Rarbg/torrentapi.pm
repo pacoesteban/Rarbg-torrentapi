@@ -105,6 +105,7 @@ sub _make_request {
         }
     }
     $url .= "format=" . $self->_format . "&";
+    $url .= "ranked=" . $self->ranked . "&";
     $url .= "token=" . $self->_token;
     my $res_json = $self->_ua->get($url);
     if ( $res_json->is_success ) {
