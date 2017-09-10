@@ -1,6 +1,8 @@
 Revision history for Rarbg-torrentapi
 
 {{$NEXT}}
+
+v0.1.5  2017-09-10 18:16:16 CEST
         - PR #1 --> Fix ranked attribute. by baptistecdr
 
 v0.1.4  2015-09-30 16:59:43 CEST

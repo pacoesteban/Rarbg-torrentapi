@@ -101,7 +101,7 @@ Makes a call to the API in 'list' mode. It returns either a Rarbg::torrentapi::E
 
 # AUTHOR
 
-Paco Esteban &lt;paco@onna.be>
+Paco Esteban <paco@onna.be>
 
 # COPYRIGHT
 
