@@ -2,7 +2,7 @@ package Rarbg::torrentapi;
 
 use strict;
 use 5.008_005;
-our $VERSION = 'v0.1.6';
+our $VERSION = 'v0.1.7';
 use LWP::UserAgent;
 use JSON;
 use Carp;
