@@ -1,3 +1,11 @@
+** This repo has been moved ! **
+
+I might keep pushing to this github repo, but upstream is now:
+
+  https://git.onna.be/dotfiles/
+
+----------------------------------------------------------------------------
+
 # NAME
 
 Rarbg::torrentapi - Wrapper around Rarbg torrentapi ([https://torrentapi.org/apidocs\_v2.txt](https://torrentapi.org/apidocs_v2.txt))
@@ -102,6 +110,10 @@ Makes a call to the API in 'list' mode. It returns either a Rarbg::torrentapi::E
 # AUTHOR
 
 Paco Esteban <paco@onna.be>
+
+# BUGS
+
+Patches are welcome. Feel free to send them via email to the author.
 
 # COPYRIGHT
 
