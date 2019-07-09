@@ -242,74 +242,51 @@ It accepts 'tv' and 'movies'. But, for the rest of categories only accepts its i
 
 =over 4
 
-=item * XXX (18+)
-    4
+=item * XXX (18+) => 4
 
-=item * Movies/XVID
-    14
+=item * Movies/XVID => 14
 
-=item * Movies/XVID/720
-    48
+=item * Movies/XVID/720 => 48
 
-=item * Movies/x264
-    17
+=item * Movies/x264 => 17
 
-=item * Movies/x264/1080
-    44
+=item * Movies/x264/1080 => 44
 
-=item * Movies/x264/720
-    45
+=item * Movies/x264/720 => 45
 
-=item * Movies/x264/3D
-    47
+=item * Movies/x264/3D => 47
 
-=item * Movies/x264/4k
-    50
+=item * Movies/x264/4k => 50
 
-=item * Movies/x265/4k
-    51
+=item * Movies/x265/4k => 51
 
-=item * Movies/x264/4k/HDR
-    52
+=item * Movies/x264/4k/HDR => 52
 
-=item * Movies/Full BD
-    42
+=item * Movies/Full BD => 42
 
-=item * Movies/BD Remux
-    46
+=item * Movies/BD Remux => 46
 
-=item * TV Episodes
-    18
+=item * TV Episodes => 18
 
-=item * TV HD Episodes
-    41
+=item * TV HD Episodes => 41
 
-=item * TV UHD Episodes
-    49
+=item * TV UHD Episodes => 49
 
-=item * Movies/MP3
-    23
+=item * Movies/MP3 => 23
 
-=item * Movies/FLAC
-    25
+=item * Movies/FLAC => 25
 
-=item * Games/PC ISO
-    27
+=item * Games/PC ISO => 27
 
-=item * Games/PC RIP
-    28
+=item * Games/PC RIP => 28
 
-=item * Games/PS3
-    40
+=item * Games/PS3 => 40
 
-=item * Games/XBOX-360
-    32
+=item * Games/XBOX-360 => 32
 
-=item * Software/PC ISO
-    33
+=item * Software/PC ISO => 33
 
-=item * Games/PS4
-    53
+=item * Games/PS4 => 53
 
 =back
 
