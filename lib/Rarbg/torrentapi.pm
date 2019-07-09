@@ -11,8 +11,9 @@ use Rarbg::torrentapi::Error;
 use Moose;
 
 our $BASEURL = 'https://torrentapi.org/pubapi_v2.php?';
+our $REQUEST_LIMIT = 2; # The api has a 1req/2s limit.
 
-has [qw(search_string search_imdb search_themoviedb search_tvdb category)] => (
+has [ qw(search_string search_imdb search_themoviedb search_tvdb category) ] => (
     is  => 'rw',
     isa => 'Str'
 );
@@ -29,7 +30,7 @@ has sort => (
     default => 'last'
 );
 
-has [qw(min_seeders min_leechers)] => (
+has [ qw(min_seeders min_leechers) ] => (
     is  => 'rw',
     isa => 'Int'
 );
@@ -61,14 +62,14 @@ has _format => (
 has _ua => (
     is      => 'ro',
     default => sub {
-        LWP::UserAgent->new( agent => 'curl/7.44.0' );
+        LWP::UserAgent->new(agent => 'curl/7.44.0');
     }
 );
 
 has _token => (
-    is      => 'rw',
-    isa     => 'Str',
-    default => sub {
+    is       => 'rw',
+    isa      => 'Str',
+    default  => sub {
         my $self = shift;
         $self->_renew_token();
     },
@@ -82,14 +83,20 @@ has _token_time => (
     default => -1,
 );
 
+has _last_request => (
+    is      => 'rw',
+    isa     => => 'Int',
+    default => -1
+);
+
 sub _renew_token {
     my $self = shift;
-    my $url  = $BASEURL . "get_token=get_token&app_id=" . $self->app_id;
+    $self->_last_request(time);
+    my $url = $BASEURL . "get_token=get_token&app_id=" . $self->app_id;
     my $res_json = $self->_ua->get($url);
-    sleep 1;
-    if ( $res_json->is_success ) {
+    if ($res_json->is_success) {
         $self->_token_time(time);
-        my $res = decode_json( $res_json->decoded_content );
+        my $res = decode_json($res_json->decoded_content);
         return $res->{token};
     }
     else {
@@ -99,18 +106,21 @@ sub _renew_token {
 
 sub _token_valid {
     my $self = shift;
-    ( time - $self->_token_time ) < 890;
+    (time - $self->_token_time) < 890;
 }
 
 sub _make_request {
     my $self = shift;
-    unless ( $self->_token_valid ) {
-        $self->_token( $self->_renew_token );
+    sleep $REQUEST_LIMIT if $self->_last_request != -1 && time - $self->_last_request < $REQUEST_LIMIT;
+    unless ($self->_token_valid) {
+        $self->_token($self->_renew_token);
+        sleep $REQUEST_LIMIT;
     }
+    $self->_last_request(time);
     my $url = $BASEURL;
-    foreach my $attribute ( $self->meta->get_attribute_list ) {
+    foreach my $attribute ($self->meta->get_attribute_list) {
         next if $attribute =~ /^_/;
-        if ( $self->$attribute ) {
+        if ($self->$attribute) {
             $url .= "$attribute=" . $self->$attribute . "&";
         }
     }
@@ -118,13 +128,12 @@ sub _make_request {
     $url .= "ranked=" . $self->ranked . "&";
     $url .= "token=" . $self->_token;
     my $res_json = $self->_ua->get($url);
-    if ( $res_json->is_success ) {
-        my $tresults = decode_json( $res_json->decoded_content );
+    if ($res_json->is_success) {
+        my $tresults = decode_json($res_json->decoded_content);
         my @res;
-        if ( $tresults->{torrent_results}
-            && scalar( @{ $tresults->{torrent_results} } ) > 1 )
-        {
-            foreach my $t ( @{ $tresults->{torrent_results} } ) {
+        if ($tresults->{torrent_results}
+            && scalar(@{$tresults->{torrent_results}}) > 1) {
+            foreach my $t (@{$tresults->{torrent_results}}) {
                 my $t_obj = Rarbg::torrentapi::Res->new($t);
                 push @res, $t_obj;
             }
@@ -145,8 +154,8 @@ foreach my $method (qw/list search/) {
         sub {
             my $self = shift;
             my $args = shift;
-            foreach my $key ( keys %{$args} ) {
-                $self->$key( $args->{$key} );
+            foreach my $key (keys %{$args}) {
+                $self->$key($args->{$key});
             }
             $self->mode("$method");
             return $self->_make_request;
@@ -230,7 +239,79 @@ This is the Imdb id (http://imdb.com) in the form 'tt123456'
 
 Category can be quite confusing.
 It accepts 'tv' and 'movies'. But, for the rest of categories only accepts its id numbers (or a semi-colon separated list of them).
-Check Rarbg website to see what those are. They are not documented anywhere.
+
+=over 4
+
+=item * XXX (18+)
+    4
+
+=item * Movies/XVID
+    14
+
+=item * Movies/XVID/720
+    48
+
+=item * Movies/x264
+    17
+
+=item * Movies/x264/1080
+    44
+
+=item * Movies/x264/720
+    45
+
+=item * Movies/x264/3D
+    47
+
+=item * Movies/x264/4k
+    50
+
+=item * Movies/x265/4k
+    51
+
+=item * Movies/x264/4k/HDR
+    52
+
+=item * Movies/Full BD
+    42
+
+=item * Movies/BD Remux
+    46
+
+=item * TV Episodes
+    18
+
+=item * TV HD Episodes
+    41
+
+=item * TV UHD Episodes
+    49
+
+=item * Movies/MP3
+    23
+
+=item * Movies/FLAC
+    25
+
+=item * Games/PC ISO
+    27
+
+=item * Games/PC RIP
+    28
+
+=item * Games/PS3
+    40
+
+=item * Games/XBOX-360
+    32
+
+=item * Software/PC ISO
+    33
+
+=item * Games/PS4
+    53
+
+=back
 
 =head2 limit
 
