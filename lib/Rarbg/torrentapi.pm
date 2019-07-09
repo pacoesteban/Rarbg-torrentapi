@@ -13,7 +13,7 @@ use Moose;
 our $BASEURL = 'https://torrentapi.org/pubapi_v2.php?';
 our $REQUEST_LIMIT = 2; # The api has a 1req/2s limit.
 
-has [ qw(search_string search_imdb search_themoviedb search_tvdb category) ] => (
+has [qw(search_string search_imdb search_themoviedb search_tvdb category)] => (
     is  => 'rw',
     isa => 'Str'
 );
@@ -30,7 +30,7 @@ has sort => (
     default => 'last'
 );
 
-has [ qw(min_seeders min_leechers) ] => (
+has [qw(min_seeders min_leechers)] => (
     is  => 'rw',
     isa => 'Int'
 );
@@ -62,14 +62,14 @@ has _format => (
 has _ua => (
     is      => 'ro',
     default => sub {
-        LWP::UserAgent->new(agent => 'curl/7.44.0');
+        LWP::UserAgent->new( agent => 'curl/7.44.0' );
     }
 );
 
 has _token => (
-    is       => 'rw',
-    isa      => 'Str',
-    default  => sub {
+    is      => 'rw',
+    isa     => 'Str',
+    default => sub {
         my $self = shift;
         $self->_renew_token();
     },
@@ -85,18 +85,18 @@ has _token_time => (
 
 has _last_request => (
     is      => 'rw',
-    isa     => => 'Int',
+    isa     => 'Int',
     default => -1
 );
 
 sub _renew_token {
     my $self = shift;
     $self->_last_request(time);
-    my $url = $BASEURL . "get_token=get_token&app_id=" . $self->app_id;
+    my $url  = $BASEURL . "get_token=get_token&app_id=" . $self->app_id;
     my $res_json = $self->_ua->get($url);
-    if ($res_json->is_success) {
+    if ( $res_json->is_success ) {
         $self->_token_time(time);
-        my $res = decode_json($res_json->decoded_content);
+        my $res = decode_json( $res_json->decoded_content );
         return $res->{token};
     }
     else {
@@ -106,21 +106,21 @@ sub _renew_token {
 
 sub _token_valid {
     my $self = shift;
-    (time - $self->_token_time) < 890;
+    ( time - $self->_token_time ) < 890;
 }
 
 sub _make_request {
     my $self = shift;
     sleep $REQUEST_LIMIT if $self->_last_request != -1 && time - $self->_last_request < $REQUEST_LIMIT;
-    unless ($self->_token_valid) {
-        $self->_token($self->_renew_token);
+    unless ( $self->_token_valid ) {
+        $self->_token( $self->_renew_token );
         sleep $REQUEST_LIMIT;
     }
     $self->_last_request(time);
     my $url = $BASEURL;
-    foreach my $attribute ($self->meta->get_attribute_list) {
+    foreach my $attribute ( $self->meta->get_attribute_list ) {
         next if $attribute =~ /^_/;
-        if ($self->$attribute) {
+        if ( $self->$attribute ) {
             $url .= "$attribute=" . $self->$attribute . "&";
         }
     }
@@ -128,12 +128,13 @@ sub _make_request {
     $url .= "ranked=" . $self->ranked . "&";
     $url .= "token=" . $self->_token;
     my $res_json = $self->_ua->get($url);
-    if ($res_json->is_success) {
-        my $tresults = decode_json($res_json->decoded_content);
+    if ( $res_json->is_success ) {
+        my $tresults = decode_json( $res_json->decoded_content );
         my @res;
-        if ($tresults->{torrent_results}
-            && scalar(@{$tresults->{torrent_results}}) > 1) {
-            foreach my $t (@{$tresults->{torrent_results}}) {
+        if ( $tresults->{torrent_results}
+            && scalar( @{ $tresults->{torrent_results} } ) > 1 )
+        {
+            foreach my $t ( @{ $tresults->{torrent_results} } ) {
                 my $t_obj = Rarbg::torrentapi::Res->new($t);
                 push @res, $t_obj;
             }
@@ -154,8 +155,8 @@ foreach my $method (qw/list search/) {
         sub {
             my $self = shift;
             my $args = shift;
-            foreach my $key (keys %{$args}) {
-                $self->$key($args->{$key});
+            foreach my $key ( keys %{$args} ) {
+                $self->$key( $args->{$key} );
             }
             $self->mode("$method");
             return $self->_make_request;
@@ -178,10 +179,10 @@ Rarbg::torrentapi - Wrapper around Rarbg torrentapi (L<https://torrentapi.org/ap
 
   use Rarbg::torrentapi;
   my $tapi = Rarbg::torrentapi->new();
-  
+
   # list lastest torrents
   my $last_added = $tapi->list();
-  
+
   # list torrents sorted by seeders
   my $last_added = $tapi->list({
       sort => 'seeders',
