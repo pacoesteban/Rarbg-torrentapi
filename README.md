@@ -1,15 +1,15 @@
 # NAME
 
-Rarbg::torrentapi - Wrapper around [Rarbg torrentapi](https://torrentapi.org/apidocs_v2.txt)
+Rarbg::torrentapi - Wrapper around Rarbg torrentapi ([https://torrentapi.org/apidocs\_v2.txt](https://torrentapi.org/apidocs_v2.txt))
 
 # SYNOPSIS
 
     use Rarbg::torrentapi;
     my $tapi = Rarbg::torrentapi->new();
-    
+
     # list lastest torrents
     my $last_added = $tapi->list();
-    
+
     # list torrents sorted by seeders
     my $last_added = $tapi->list({
         sort => 'seeders',
@@ -67,29 +67,29 @@ This is the Imdb id (http://imdb.com) in the form 'tt123456'
 Category can be quite confusing.
 It accepts 'tv' and 'movies'. But, for the rest of categories only accepts its id numbers (or a semi-colon separated list of them).
 
-* XXX (18+) => 4
-* Movies/XVID => 14
-* Movies/XVID/720 => 48
-* Movies/x264 => 17
-* Movies/x264/1080 => 44
-* Movies/x264/720 => 45
-* Movies/x264/3D => 47
-* Movies/x264/4k => 50
-* Movies/x265/4k => 51
-* Movies/x264/4k/HDR => 52
-* Movies/Full BD => 42
-* Movies/BD Remux => 46
-* TV Episodes => 18
-* TV HD Episodes => 41
-* TV UHD Episodes => 49
-* Movies/MP3 => 23
-* Movies/FLAC => 25
-* Games/PC ISO => 27
-* Games/PC RIP => 28
-* Games/PS3 => 40
-* Games/XBOX-360 => 32
-* Software/PC ISO => 33
-* Games/PS4 => 53
+- XXX (18+) => 4
+- Movies/XVID => 14
+- Movies/XVID/720 => 48
+- Movies/x264 => 17
+- Movies/x264/1080 => 44
+- Movies/x264/720 => 45
+- Movies/x264/3D => 47
+- Movies/x264/4k => 50
+- Movies/x265/4k => 51
+- Movies/x264/4k/HDR => 52
+- Movies/Full BD => 42
+- Movies/BD Remux => 46
+- TV Episodes => 18
+- TV HD Episodes => 41
+- TV UHD Episodes => 49
+- Movies/MP3 => 23
+- Movies/FLAC => 25
+- Games/PC ISO => 27
+- Games/PC RIP => 28
+- Games/PS3 => 40
+- Games/XBOX-360 => 32
+- Software/PC ISO => 33
+- Games/PS4 => 53
 
 ## limit
 
@@ -125,8 +125,7 @@ Makes a call to the API in 'list' mode. It returns either a Rarbg::torrentapi::E
 # AUTHORS
 
 Paco Esteban <paco@onna.be>
-
-Baptiste C. (https://github.com/baptistecdr)
+Baptiste C. [https://github.com/baptistecdr](https://github.com/baptistecdr)
 
 # COPYRIGHT
 
