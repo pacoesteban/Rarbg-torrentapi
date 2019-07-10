@@ -322,9 +322,10 @@ Makes a call to the API in 'search' mode. It returns either a Rarbg::torrentapi:
 
 Makes a call to the API in 'list' mode. It returns either a Rarbg::torrentapi::Error or an array of L<Rarbg::torrentapi::Res>.
 
-=head1 AUTHOR
+=head1 AUTHORS
 
 Paco Esteban E<lt>paco@onna.beE<gt>
+Baptiste C. L<https://github.com/baptistecdr>
 
 =head1 COPYRIGHT
 

@@ -1,6 +1,6 @@
 # NAME
 
-Rarbg::torrentapi - Wrapper around Rarbg torrentapi ([https://torrentapi.org/apidocs\_v2.txt](https://torrentapi.org/apidocs_v2.txt))
+Rarbg::torrentapi - Wrapper around [Rarbg torrentapi](https://torrentapi.org/apidocs_v2.txt)
 
 # SYNOPSIS
 
@@ -122,9 +122,11 @@ Makes a call to the API in 'search' mode. It returns either a Rarbg::torrentapi:
 
 Makes a call to the API in 'list' mode. It returns either a Rarbg::torrentapi::Error or an array of [Rarbg::torrentapi::Res](https://metacpan.org/pod/Rarbg::torrentapi::Res).
 
-# AUTHOR
+# AUTHORS
 
 Paco Esteban <paco@onna.be>
+
+Baptiste C. (https://github.com/baptistecdr)
 
 # COPYRIGHT
 
