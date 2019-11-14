@@ -132,7 +132,7 @@ sub _make_request {
         my $tresults = decode_json( $res_json->decoded_content );
         my @res;
         if ( $tresults->{torrent_results}
-            && scalar( @{ $tresults->{torrent_results} } ) > 1 )
+            && scalar( @{ $tresults->{torrent_results} } ) )
         {
             foreach my $t ( @{ $tresults->{torrent_results} } ) {
                 my $t_obj = Rarbg::torrentapi::Res->new($t);
